@@ -1,24 +1,30 @@
 "use strict";
 
 const express = require('express');
+const hbs = require('hbs');
 
 let app = express();
 
+// set handlbars templating engine
+app.set('view engine', 'hbs');
+// serve static pages
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', (request, response) => {
-    // response.send('<h1>Hello Express</h1>');
-    response.send({
-        name: 'Ben',
-        likes: [
-            'Video Games',
-            'Sleeping'
-        ]
+// return json data
+app.get('/', (req, res) => {
+    res.render('index.hbs', {
+        pageTitle: 'Node Server Test',
+        welcomeMessage: 'Welcome to the node server test, using Express.',
+        currentYear: new Date().getFullYear()
     });
 });
 
-app.get('/about', (request, response) => {
-    response.send('About Page');
+// return html
+app.get('/about', (req, res) => {
+    res.render('about.hbs', {
+        pageTitle: 'About Page',
+        currentYear: new Date().getFullYear()
+    });
 });
 
 app.get('/bad', (request, response) => {
