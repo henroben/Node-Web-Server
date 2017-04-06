@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{pageTitle}}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
-        <div class="col-md-12">
-            <div class="jumbotron">
-                <h1>{{pageTitle}}</h1>
-                <p>Node Server help page.</p>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{pageTitle}}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        {{> menu}}
+        <div class="container">
+            <div class="col-md-12">
+                {{> header}}
             </div>
+            {{> footer}}
         </div>
-        <footer class="pull-right">
-            <p>Copyright {{currentYear}}</p>
-        </footer>
-    </div>
-</body>
+    </body>
 </html>

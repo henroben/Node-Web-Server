@@ -5,17 +5,27 @@ const hbs = require('hbs');
 
 let app = express();
 
+// Support partials
+hbs.registerPartials(__dirname + '/views/partials');
 // set handlbars templating engine
 app.set('view engine', 'hbs');
 // serve static pages
 app.use(express.static(__dirname + '/public'));
+
+// HBS helper functions
+hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear();
+});
+
+hbs.registerHelper('screamIt', (text) => {
+    return text.toUpperCase();
+});
 
 // return json data
 app.get('/', (req, res) => {
     res.render('index.hbs', {
         pageTitle: 'Node Server Test',
         welcomeMessage: 'Welcome to the node server test, using Express.',
-        currentYear: new Date().getFullYear()
     });
 });
 
@@ -23,7 +33,6 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page',
-        currentYear: new Date().getFullYear()
     });
 });
 
