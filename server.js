@@ -6,6 +6,8 @@ const fs = require('fs');
 
 // Set Maintenance Mode
 const maintenance = false;
+// Set port for heroku || local
+const port = process.env.PORT || 3000;
 
 let app = express();
 
@@ -73,6 +75,6 @@ app.get('/bad', (request, response) => {
 
 // Server Setup
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 });
